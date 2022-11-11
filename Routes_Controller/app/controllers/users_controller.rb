@@ -2,8 +2,16 @@ class UsersController < ApplicationController
 
 
     def index
-        users = User.all
-        render json: users
+        if params[:query]
+            user = User.select('*').where('username = (?)', params[:query])
+            render json: user
+        else
+            user = User.all
+            render json: user
+        end
+
+
+
         # render plain: "I'm in the index action!"
         # render json: params
 
@@ -16,6 +24,7 @@ class UsersController < ApplicationController
         # user.save!
         # render json: user
         user = User.new(user_param)
+
         if user.save
           render json: user
         else

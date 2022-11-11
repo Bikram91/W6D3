@@ -20,3 +20,6 @@ a3 = Artwork.create!(title: 'greek statue', image_url: 'greekstatue.com', artist
 
 as1 = ArtworkShare.create!(artwork_id: a1.id, viewer_id: u2.id)
 as2 = ArtworkShare.create!(artwork_id: a2.id, viewer_id: u1.id)
+
+c1 = Comment.create!(author_id: u3.id, artwork_id: a1.id, body: 'nice work!!!')
+c2 = Comment.create!(author_id: u1.id, artwork_id: a2.id, body: 'Wow this is expensiv!!!')
